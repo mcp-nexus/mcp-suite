@@ -1,6 +1,6 @@
 {
   "name": "mcp-suite",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1",
   "description": "A multi-domain, auth-first MCP server giving AI agents access to financial markets, Web3/DeFi, developer tools, and healthcare (FHIR). Production-grade, typed, and installable in minutes.",
   "keywords": [
     "mcp",
@@ -40,7 +40,7 @@
   "main": "./dist/server.js",
   "types": "./dist/server.d.ts",
   "bin": {
-    "mcp-suite": "./dist/index.js"
+    "mcp-suite": "dist/index.js"
   },
   "exports": {
     ".": "./dist/server.js",
@@ -52,14 +52,15 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && chmod +x dist/index.js",
     "dev": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "format": "prettier --write src/",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "prepare": "husky",
     "prepublishOnly": "npm run typecheck && npm run lint && npm test"
   },

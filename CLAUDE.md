@@ -116,6 +116,8 @@ Every domain follows the same structure. When adding a new tool to an existing d
 2. Add the handler to `domains/[name]/tools/[tool-name].ts`
 3. Register the tool in `domains/[name]/index.ts` via `server.tool()`
 4. Document it in `docs/API.md`
+5. Add the tool to the relevant domain table in `README.md`
+6. Add a changelog entry under `## [Unreleased]` in `docs/CHANGELOG.md`
 
 When adding a new domain entirely, copy `domains/devtools/` as the reference. Every domain exports a `Domain` object:
 
@@ -128,6 +130,10 @@ export const myDomain: Domain = {
 ```
 
 Register it in `server.ts`. See `docs/TDD.md §5` and `docs/CODING_STANDARDS.md` for full details.
+
+When adding a new domain entirely, also update:
+- `README.md` — add a new domain section with tool table and required env vars
+- `docs/CHANGELOG.md` — add all new tools under `## [Unreleased] ### Added`
 
 ---
 
@@ -181,6 +187,9 @@ After every session where you encounter an error, make a fix, or receive a corre
 
 - At the end of EVERY task or session, check if any errors occurred or corrections were made. If yes, update `## Learned Lessons` before closing.
 - If the user says "note that", "remember", or "don't do that again", immediately update the relevant section of this file.
+- After ANY major change (new tool, new domain, new CLI command, new env var, changed behavior, breaking change, deprecation), you MUST update **both**:
+  - `README.md` — keep the public-facing docs accurate
+  - `docs/CHANGELOG.md` — add an entry under `## [Unreleased]` with the appropriate `### Added / ### Changed / ### Fixed / ### Removed` heading
 
 ---
 
