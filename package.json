@@ -1,0 +1,94 @@
+{
+  "name": "mcp-suite",
+  "version": "0.1.0",
+  "description": "A multi-domain, auth-first MCP server giving AI agents access to financial markets, Web3/DeFi, developer tools, and healthcare (FHIR). Production-grade, typed, and installable in minutes.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "ai-tools",
+    "claude",
+    "ai-infrastructure",
+    "financial-data",
+    "web3",
+    "defi",
+    "developer-tools",
+    "healthcare",
+    "fhir",
+    "typescript",
+    "jwt",
+    "authentication"
+  ],
+  "author": {
+    "name": "Shola Ayeni",
+    "email": "ayenisholah@gmail.com",
+    "url": "https://github.com/ayenisholah"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ayenisholah/mcp-suite#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayenisholah/mcp-suite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayenisholah/mcp-suite/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "main": "./dist/server.js",
+  "types": "./dist/server.d.ts",
+  "bin": {
+    "mcp-suite": "./dist/index.js"
+  },
+  "exports": {
+    ".": "./dist/server.js",
+    "./domains/*": "./dist/domains/*.js"
+  },
+  "files": [
+    "dist/",
+    ".env.example",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "prepare": "husky",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "jose": "^5.9.0",
+    "node-cache": "^5.1.2",
+    "pino": "^9.6.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "eslint": "^9.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
